@@ -3,7 +3,9 @@
 In this project, we compare the advantages and disadvantages of Domain Specific Languages (DSLs) for max-flow problems. We:
 
 - Design our own compact DSL for graph vertex problems (GraphLabLite)
-- Implement three different algorithms to solve max flow problems (Ford Fulkerson, Dinic’s, Push-Relabel), and compare the difference between the OpenMP-parallelized algorithms and DSL-parallelized algorithm
+- Implement three different algorithms to solve max flow problems (Ford Fulkerson, Dinic’s, Push-Relabel)
+
+And compare the difference between the OpenMP-parallelized algorithms and DSL-parallelized algorithm
 
 ### Repo Layout
 
