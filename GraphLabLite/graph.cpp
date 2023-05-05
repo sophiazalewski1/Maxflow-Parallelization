@@ -483,6 +483,15 @@ bool consistent_update(tGraph &G, int vid, double *critical_time){
     return res;
 }
 
+bool done_working(){
+    for(int i = 0; i< NUM_WORKERS; i++){
+        if(!workQs[i].q.empty()){
+            return true;
+        }
+    }
+    return false;
+}
+
 //=========================== RETURNING A SOLUTION ===========================//
 
 tGraph *solve(tGraph &G){
@@ -526,25 +535,15 @@ tGraph *solve(tGraph &G){
             Timer mytime;
             int tid = omp_get_thread_num();
             bool empty = false;
-            while(num_empty < NUM_WORKERS){
+            while(done_working()){
                 double start = mytime.elapsed();
                 #pragma omp barrier
                 int next_v = pop_paritioned(tid);
-                if(next_v == -1 && !empty){
-                    #pragma omp atomic
-                    num_empty += 1;
-                    empty = true;
-                }
-                else if(next_v != -1){
-                    if(empty){
-                        #pragma omp atomic
-                        num_empty-=1;
-                        empty = false;
-                    }
+                if(next_v != -1){
                     consistent_update(G, next_v, &critical_time);
                 }
                 #pragma omp barrier
-            }
+            }   
         }
     }
     else if(G.schedule == PARTITIONED_SIMULTANEOUS){
