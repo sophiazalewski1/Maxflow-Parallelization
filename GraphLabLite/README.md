@@ -132,6 +132,13 @@ P.initializeGraph(edges, other params);
 P.solveMyProblem(); // Runs GAS until convergence + your added postprocessing
 ```
 
+Make sure that if you are running a solver with multiple threads, you edit the value for "NUM WORKERS" defined in ```graph.cpp``` to be equal to the number of threads you wish to run the code on:
+
+```cpp
+#define NUM_WORKERS 4 // IMPORTANT! Set this equal to 
+                      // the number of threads being run
+```
+
 ## Debugging
 
 If you choose to write functions to print vertex and edge data, you can call the ```printGraph``` function defined in graph.cpp which
