@@ -9,7 +9,7 @@ And compare the difference between the OpenMP-parallelized algorithms and DSL-pa
 
 ### Repo Layout
 
-- ```Test Case Generator``` - contains a python script to generate Max-flow graph problems. See [here](Test\_Case\_Generator/README.md).
+- ```Test Case Generator``` - contains a python script to generate Max-flow graph problems. See [here](TestCaseGenerator/README.md).
 - ```GraphLabLite ``` - contains our implementation of the GraphLabLite DSL. See [here](GraphLabLite/README.md).
 - ```Dinic's``` - contains sequential and parallel implementations of Dinic's in OpenMP
 - ```Ford Fulkerson's``` - contains sequential and parallel implementations of Ford Fulkerson's in OpenMP
